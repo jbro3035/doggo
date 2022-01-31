@@ -1,9 +1,3 @@
-#
-# Jessica's standard serial motor code
-#
-# RETURNS: Nothing. Motors alternate spinning at full power in timewise direction
-#
-
 import time
 from serial import Serial
 from time import sleep
@@ -15,9 +9,9 @@ def stopBothMotors(numSec):
     while diffTime < numSec:
         current = time.time()
         diffTime = current - start
-        roboclaw.write(bytes([0]))          # Shuts down channels 1 and 2 for numSec seconds
+        roboclaw.write(bytes([0]))            # Shuts down channels 1 and 2 for numSec seconds
 
-# Moves a motor time-wise at full power
+# Spins a motor clock-wise at full power
 def fullForward(motorNum, numSec):
     start = time.time()
     diffTime = 0
@@ -44,7 +38,7 @@ def stopMotor(motorNum, numSec):
         else:
             roboclaw.write(bytes([192]))    # Channel 2 stop
 
-# Moves a motor counter-time-wise at full power
+# Moves a motor counter-clock-wise at full power
 def fullReverse(motorNum, numSec):
     start = time.time()
     diffTime = 0
